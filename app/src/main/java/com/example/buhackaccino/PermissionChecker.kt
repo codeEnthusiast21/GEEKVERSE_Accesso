@@ -73,7 +73,8 @@ class PermissionCheckerActivity : AppCompatActivity(), TextToSpeech.OnInitListen
     private fun setupButtons() {
         binding.apply {
             settingsButton.setOnClickListener {
-
+                val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                accessibilitySettingsLauncher.launch(intent)
             }
 
             goToMainButton.setOnClickListener {
@@ -86,6 +87,7 @@ class PermissionCheckerActivity : AppCompatActivity(), TextToSpeech.OnInitListen
                 }
 
                 TransitionActivity.start(this@PermissionCheckerActivity, touristHomeActivity::class.java, extras)
+                finish()
             }
 
 
@@ -97,9 +99,9 @@ class PermissionCheckerActivity : AppCompatActivity(), TextToSpeech.OnInitListen
 
     private fun checkAccessibilityPermission() {
         if (isAccessibilityServiceEnabled()) {
-            showVoiceControlDisabled()
+            showMainFlow()
         } else {
-            showAccessibilityNeeded()
+            showAccessibilityWarning()
         }
     }
 
@@ -116,7 +118,7 @@ class PermissionCheckerActivity : AppCompatActivity(), TextToSpeech.OnInitListen
         }
     }
 
-    private fun showVoiceControlDisabled() {
+    private fun showMainFlow() {
         binding.apply {
             statusImage.setImageResource(R.drawable.ic_info)
             statusText.text = "Select your preferred language"
@@ -127,7 +129,7 @@ class PermissionCheckerActivity : AppCompatActivity(), TextToSpeech.OnInitListen
         }
     }
 
-    private fun showAccessibilityNeeded() {
+    private fun showAccessibilityWarning() {
         binding.apply {
             statusImage.setImageResource(R.drawable.ic_warning)
             statusText.text = "Please enable Voice Control Service in Accessibility Settings"

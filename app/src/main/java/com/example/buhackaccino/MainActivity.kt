@@ -162,21 +162,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
         setupTouchListener()
         cameraExecutor = Executors.newSingleThreadExecutor()
-
-        tts = TextToSpeech(this) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                isTTSInitialized = true
-                val result = tts.setLanguage(selectedLocale)
-                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    Log.e(TAG, "Language not supported: $selectedLanguage")
-                    val installIntent = Intent()
-                    installIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
-                    startActivity(installIntent)
-                }
-            } else {
-                Log.e(TAG, "TTS Initialization failed")
-            }
-        }
     }
 
     private fun setupTranslator() {

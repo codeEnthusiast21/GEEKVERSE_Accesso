@@ -15,16 +15,19 @@ class touristHomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTouristHomeBinding
 
+    private var selectedLanguage = "en"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTouristHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        selectedLanguage = intent.getStringExtra("selected_language") ?: "en"
+
         // Card click listener
         binding.btnCamera.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            // Optional: send data through intent
-            intent.putExtra("PLACE_NAME", "Tokyo Tower")
+            intent.putExtra("selected_language", selectedLanguage)
             startActivity(intent)
         }
         val places = listOf(
