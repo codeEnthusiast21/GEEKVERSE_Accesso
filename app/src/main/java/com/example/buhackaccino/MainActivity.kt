@@ -63,8 +63,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var cameraProvider: ProcessCameraProvider? = null
     private var camera: Camera? = null
     private var preview: Preview? = null
+    private val NEBIUS_API_KEY = BuildConfig.NEBIUS_API_KEY
     private val NEBIUS_API_ENDPOINT = "https://api.studio.nebius.com/v1/chat/completions"
-    private val NEBIUS_API_KEY = "eyJhbGciOiJIUzI1NiIsImtpZCI6IlV6SXJWd1h0dnprLVRvdzlLZWstc0M1akptWXBvX1VaVkxUZlpnMDRlOFUiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDExNDY0MDczMjM5MDk5ODIyOTYwMiIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIiwiaXNzIjoiYXBpX2tleV9pc3N1ZXIiLCJhdWQiOlsiaHR0cHM6Ly9uZWJpdXMtaW5mZXJlbmNlLmV1LmF1dGgwLmNvbS9hcGkvdjIvIl0sImV4cCI6MTkwMTUyMDk2MCwidXVpZCI6ImQxMmIwYTMzLWVmMmEtNGViNC1hMTA5LTk4OWUyMWIxMTRjZSIsIm5hbWUiOiJURVNUMSIsImV4cGlyZXNfYXQiOiIyMDMwLTA0LTA0VDA4OjE2OjAwKzAwMDAifQ.tmdbnrAUQmsopIDMYCmxI16HpG5Ij8dijxfFKlThHrw"
     private var isCameraFrozen = false
     private lateinit var chatAdapter: ChatAdapter
     private var startX = 0f
